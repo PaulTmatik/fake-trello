@@ -32,6 +32,7 @@ class EditableText extends Component {
           aria-label={value}
           value={this.state.content}
           onChange={this.textOnChangeHandler}
+          onKeyUp={this.textOnKeyUpHandler}
         ></textarea>
       </div>
     );
@@ -40,6 +41,13 @@ class EditableText extends Component {
   textOnChangeHandler(e) {
     const { onChange } = this.props;
     onChange && onChange(e);
+  }
+
+  textOnKeyUpHandler(e) {
+    e.target.style.height = "auto";
+    if (e.target.scrollHeight > e.target.clientHeight) {
+      e.target.style.height = `${e.target.scrollHeight}px`;
+    }
   }
 }
 
