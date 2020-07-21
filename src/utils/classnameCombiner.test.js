@@ -32,4 +32,10 @@ describe("Function combineClassNames", () => {
       combineClassNames(["class-name", { class_name: true }, "class__name"])
     ).toBe("class-name class_name class__name");
   });
+
+  test('shuld return "class-name class__name"', () => {
+    expect(
+      combineClassNames(["class-name", undefined, "class__name"])
+    ).toBe("class-name class__name");
+  });
 });

@@ -9,7 +9,9 @@ export function combineClassNames() {
   return args
     .filter((classname) => {
       if (typeof classname === "string") return true;
-      return Object.values(classname)[0];
+      return typeof classname === "object"
+        ? Object.values(classname)[0]
+        : false;
     })
     .map((classname) =>
       typeof classname === "string" ? classname : Object.keys(classname)[0]
