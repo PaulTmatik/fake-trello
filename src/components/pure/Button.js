@@ -7,9 +7,9 @@ import "./Button.css";
 
 export default class Button extends PureComponent {
   render() {
-    const { children, icon, className } = this.props;
+    const { children, icon, className, type } = this.props;
     return (
-      <button className={combineClassNames("button", className)}>
+      <button className={combineClassNames("button", className)} type={type || "button"}>
         {this.renderWithIcon(icon, children)}
       </button>
     );
