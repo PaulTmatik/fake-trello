@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { combineClassNames } from "../../utils/classnameCombiner";
+import Textarea from "./Textarea";
 
 class EditableText extends Component {
   constructor(props) {
@@ -27,13 +28,12 @@ class EditableText extends Component {
     return (
       <div className={combineClassNames("editable_text", className)}>
         <h2 className="editable_text__header">{value}</h2>
-        <textarea
+        <Textarea
           className="editable_text__text"
-          aria-label={value}
+          aria-label={this.state.content}
           value={this.state.content}
           onChange={this.textOnChangeHandler}
-          onKeyUp={this.textOnKeyUpHandler}
-        ></textarea>
+        />
       </div>
     );
   }
@@ -41,13 +41,6 @@ class EditableText extends Component {
   textOnChangeHandler(e) {
     const { onChange } = this.props;
     onChange && onChange(e);
-  }
-
-  textOnKeyUpHandler(e) {
-    e.target.style.height = "auto";
-    if (e.target.scrollHeight > e.target.clientHeight) {
-      e.target.style.height = `${e.target.scrollHeight}px`;
-    }
   }
 }
 
