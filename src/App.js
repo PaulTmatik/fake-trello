@@ -1,16 +1,10 @@
-import React, { useState } from "react";
-import EditableText from "./components/EditableText";
-import Button from "./components/pure/Button";
+import React from "react";
+import AddForm from "./components/AddForm";
 
 function App() {
-  const [editTextValue, setEditTextValue] = useState("block 1");
   return (
     <>
-      <EditableText
-        value={editTextValue}
-        onChange={(e) => setEditTextValue(e.target.value)}
-      />
-      <Button icon="add">Добавить ещё одну колонку</Button>
+      <AddForm addType="column" onSubmit={e => console.log(e)} />
     </>
   );
 }
