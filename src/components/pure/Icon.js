@@ -5,6 +5,7 @@ import { combineClassNames } from "../../utils/classnameCombiner";
 
 const pathsSet = {
   add: <path d="m9 7h7v2h-7v7h-2v-7h-7v-2h7v-7h2v7z" />,
+  close: <path d="M9 8l5 5-1 1-5-5-5 5-1-1 5-5-5-5 1-1 5 5 5-5 1 1-5 5z"/>
 };
 
 export default class Icon extends PureComponent {
