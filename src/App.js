@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import EditableText from "./components/pure/EditableText";
+import EditableText from "./components/EditableText";
 
 function App() {
   const [editTextValue, setEditTextValue] = useState("block 1");

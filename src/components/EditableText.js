@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { combineClassNames } from "../../utils/classnameCombiner";
-import Textarea from "./Textarea";
+import { combineClassNames } from "../utils/classnameCombiner";
+import Textarea from "./pure/Textarea";
 
 class EditableText extends Component {
   constructor(props) {
