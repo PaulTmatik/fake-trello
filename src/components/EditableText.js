@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { combineClassNames } from "../utils/classnameCombiner";
 import Textarea from "./pure/Textarea";
 
+import "./EditableText.css";
+
 class EditableText extends Component {
   constructor(props) {
     super(props);
@@ -29,10 +31,11 @@ class EditableText extends Component {
       <div className={combineClassNames("editable_text", className)}>
         <h2 className="editable_text__header">{value}</h2>
         <Textarea
-          className="editable_text__text"
           aria-label={this.state.content}
-          value={this.state.content}
+          className="editable_text__text"
           onChange={this.textOnChangeHandler}
+          rows="1"
+          value={this.state.content}
         />
       </div>
     );

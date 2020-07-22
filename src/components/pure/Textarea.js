@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import "./Textarea.css";
 
 export default class Textarea extends PureComponent {
   render() {
@@ -6,6 +7,7 @@ export default class Textarea extends PureComponent {
       <textarea
         {...this.props}
         onKeyUp={this.textOnKeyUpHandler}
+        onFocus={this.textOnFocusHandler}
       ></textarea>
     );
   }
@@ -15,5 +17,9 @@ export default class Textarea extends PureComponent {
     if (e.target.scrollHeight > e.target.clientHeight) {
       e.target.style.height = `${e.target.scrollHeight}px`;
     }
+  }
+
+  textOnFocusHandler(e) {
+    e.target.select();
   }
 }

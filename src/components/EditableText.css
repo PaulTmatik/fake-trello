@@ -1,0 +1,24 @@
+.editable_text__header {
+  display: none;
+}
+
+.editable_text__header,
+.editable_text__text {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: inherit;
+  padding: inherit;
+}
+
+.editable_text__text {
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  outline: none;
+}
+
+.editable_text__text:focus {
+  border-color: #09f;
+}
