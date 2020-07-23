@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { addColumnAction, editColumnName } from "../store/dashboard";
+import { addColumnAction, editColumnNameAction, addCardAction } from "../store/dashboard";
 
 import "./Dashboard";
 import AddForm from "./AddForm";
@@ -30,13 +30,15 @@ class Dashboard extends Component {
   }
 
   drawColumns() {
-    const { columns } = this.props;
+    const { columns, addCard } = this.props;
     return columns.map((column) => (
       <Column
         key={column.id}
         columnId={column.id}
         name={column.name}
+        cards={column.cards.values}
         onChangeName={this.onChangeNameHandler}
+        addCard={addCard}
       />
     ));
   }
@@ -58,7 +60,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addColumn: (name) => dispatch(addColumnAction(name)),
-  editColumnName: (id, name) => dispatch(editColumnName(id, name)),
+  addCard: (columnId, cardName) => dispatch(addCardAction(columnId, cardName)),
+  editColumnName: (id, name) => dispatch(editColumnNameAction(id, name)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

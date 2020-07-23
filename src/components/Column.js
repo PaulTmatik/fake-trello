@@ -15,6 +15,7 @@ class Column extends Component {
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onEditTextHandler = this.onEditTextHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
   }
 
   render() {
@@ -28,10 +29,22 @@ class Column extends Component {
             onBlur={this.onChangeHandler}
           />
         </div>
-        <Card className="column__card">Тест карточки</Card>
-        <AddForm addType="card" className="column__add_card" />
+        {this.renderCards()}
+        <AddForm
+          addType="card"
+          className="column__add_card"
+          onSubmit={this.onSubmitHandler}
+        />
       </div>
     );
+  }
+
+  renderCards() {
+    return this.props.cards.map((card) => (
+      <Card key={card.id} className="column__card">
+        {card.name}
+      </Card>
+    ));
   }
 
   onChangeHandler(e) {
@@ -42,6 +55,11 @@ class Column extends Component {
 
   onEditTextHandler(e) {
     this.setState({ columnName: e.target.value });
+  }
+
+  onSubmitHandler(cardName) {
+    const { addCard, columnId } = this.props;
+    addCard && addCard(columnId, cardName);
   }
 }
 
