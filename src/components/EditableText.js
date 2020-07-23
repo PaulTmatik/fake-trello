@@ -12,6 +12,7 @@ class EditableText extends Component {
     };
 
     this.textOnChangeHandler = this.textOnChangeHandler.bind(this);
+    this.onBlurHandler = this.onBlurHandler.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -34,6 +35,7 @@ class EditableText extends Component {
           aria-label={this.state.content}
           className="editable_text__text"
           onChange={this.textOnChangeHandler}
+          onBlur={this.onBlurHandler}
           rows="1"
           value={this.state.content}
         />
@@ -44,6 +46,11 @@ class EditableText extends Component {
   textOnChangeHandler(e) {
     const { onChange } = this.props;
     onChange && onChange(e);
+  }
+
+  onBlurHandler(e) {
+    const { onBlur } = this.props;
+    onBlur && onBlur(e);
   }
 }
 
