@@ -9,6 +9,8 @@ class AddForm extends Component {
   constructor(props) {
     super(props);
 
+    this.inputField = React.createRef();
+
     this.state = {
       isEdit: false,
       editableText: "",
@@ -85,11 +87,12 @@ class AddForm extends Component {
 
   getEditFieldByType(type) {
     const inputTypes = {
-      column: <input type="text" className="input" />,
+      column: <input type="text" className="input" ref={this.inputField} />,
       card: (
         <Textarea
           className="add_form__textarea"
           placeholder={this.buttonsText[type].editTextPlaceholder}
+          ref={this.inputField}
         />
       ),
     };
@@ -116,7 +119,9 @@ class AddForm extends Component {
   }
 
   onClickShowFormButton() {
-    this.setState({ isEdit: true });
+    this.setState({ isEdit: true }, () => {
+      this.inputField.current.focus && this.inputField.current.focus();
+    });
   }
 }
 

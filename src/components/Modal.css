@@ -1,0 +1,19 @@
+.modal {
+  background-color: #fff;
+  border-radius: 0.5em;
+  margin: 1rem;
+  padding: 1rem 1em;
+}
+
+.modal--hide {
+  display: none;
+}
+
+.modal__wrapper {
+  background-color: #0006;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}

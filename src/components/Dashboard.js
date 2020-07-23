@@ -16,6 +16,7 @@ class Dashboard extends Component {
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.onChangeNameHandler = this.onChangeNameHandler.bind(this);
   }
+  
   render() {
     return (
       <div className="dashboard">

@@ -2,4 +2,37 @@
   background-color: #fff;
   border-radius: 0.25em;
   padding: 0.5em 0.5rem;
+  position: relative;
+}
+
+.card:hover {
+  background-color: #f7f7f7;
+}
+
+.card__button {
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  flex: 1 0 auto;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  outline-offset: 0.25em;
+  padding: 0;
+  text-align: inherit;
+}
+
+.card__button::after {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
 }
