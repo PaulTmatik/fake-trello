@@ -34,29 +34,32 @@ class AddForm extends Component {
   render() {
     const addType = this.props.addType || "column";
     const buttonsText = this.buttonsText[addType];
+    const { isEdit, editableText } = this.state;
+    
     return (
       <div className="add_form">
         <form
           className={combineClassNames([
             "add_form__edit",
-            {
-              "add_form--close": !this.state.isEdit,
-            },
+            { "add_form--close": !isEdit },
           ])}
           onSubmit={this.onSubmitEventHandler}
         >
           {this.getEditFieldByType(addType)}
           <div className="add_form__footer">
-            <Button
-              type="submit"
-              disabled={this.state.editableText.trim() === ""}
-            >
+            <Button type="submit" disabled={editableText.trim() === ""}>
               {buttonsText.addButtonText}
             </Button>
             <Button icon="close" onClick={this.onClickCloseButtonHandler} />
           </div>
         </form>
-        <Button icon="add" onClick={this.onClickShowFormButton}>
+        <Button
+          icon="add"
+          onClick={this.onClickShowFormButton}
+          className={combineClassNames({
+            "add_form--close": isEdit,
+          })}
+        >
           {buttonsText.openButtonText}
         </Button>
       </div>
