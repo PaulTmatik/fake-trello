@@ -1,5 +1,7 @@
 .button {
   align-items: center;
+  background-color: transparent;
+  border-color: transparent;
   border-radius: 0.25rem;
   border-style: solid;
   border-width: 2px;
@@ -10,18 +12,40 @@
   padding: 0.75em 1rem;
 }
 
+.button:hover {
+  background-color: #0002;
+}
+
 .button__icon + span {
   margin-left: .5em;
 }
 
+.button__icon {
+  height: 1em;
+  width: 1em;
+}
+
 .button--column_area {
   background-color: #fff5;
-  border: transparent;
   color: #fff;
 }
 
 .button--column_area:hover {
   background-color: #fff7;
+}
+
+.button--primary {
+  background-color: #5aac44;
+  color: #fff;
+}
+
+.button--primary:hover {
+  background-color: #61bd4f;
+}
+
+.button--primary:disabled {
+  background-color: #5aac44;
+  opacity: 0.3;
 }
 
 .button--column_area .button__icon {

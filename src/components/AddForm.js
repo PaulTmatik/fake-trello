@@ -17,12 +17,14 @@ class AddForm extends Component {
     // Имитация модуля работы с естественным языком
     this.buttonsText = {
       card: {
-        openButtonText: "Добавить ещё одну карточку",
         addButtonText: "Добавить карточку",
+        editTextPlaceholder: "Введите заголовок карточки",
+        openButtonText: "Добавить ещё одну карточку",
       },
       column: {
-        openButtonText: "Добавить ещё одну колонку",
         addButtonText: "Добавить колонку",
+        editTextPlaceholder: "",
+        openButtonText: "Добавить ещё одну колонку",
       },
     };
 
@@ -39,7 +41,13 @@ class AddForm extends Component {
     const { className } = this.props;
 
     return (
-      <div className={combineClassNames("add_form", `add_form__${addType}`, className)}>
+      <div
+        className={combineClassNames(
+          "add_form",
+          `add_form__${addType}`,
+          className
+        )}
+      >
         <form
           className={combineClassNames([
             "add_form__edit",
@@ -49,7 +57,11 @@ class AddForm extends Component {
         >
           {this.getEditFieldByType(addType)}
           <div className="add_form__footer">
-            <Button type="submit" disabled={editableText.trim() === ""}>
+            <Button
+              type="submit"
+              className="button--primary"
+              disabled={editableText.trim() === ""}
+            >
               {buttonsText.addButtonText}
             </Button>
             <Button icon="close" onClick={this.onClickCloseButtonHandler} />
@@ -58,10 +70,12 @@ class AddForm extends Component {
         <Button
           icon="add"
           onClick={this.onClickShowFormButton}
-          className={combineClassNames({
-            "add_form--close": isEdit,
-          },
-          `button--${addType}_area`)}
+          className={combineClassNames(
+            {
+              "add_form--close": isEdit,
+            },
+            `button--${addType}_area`
+          )}
         >
           {buttonsText.openButtonText}
         </Button>
@@ -72,7 +86,12 @@ class AddForm extends Component {
   getEditFieldByType(type) {
     const inputTypes = {
       column: <input type="text" className="input" />,
-      card: <Textarea className="add_form__textarea" />,
+      card: (
+        <Textarea
+          className="add_form__textarea"
+          placeholder={this.buttonsText[type].editTextPlaceholder}
+        />
+      ),
     };
 
     return React.cloneElement(inputTypes[type], {

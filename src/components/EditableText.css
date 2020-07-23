@@ -1,5 +1,19 @@
+.editable_text {
+  display: flex;
+  flex-direction: column;
+}
+
 .editable_text__header {
-  display: none;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }
 
 .editable_text__header,
@@ -16,9 +30,11 @@
   background-color: transparent;
   border: 2px solid transparent;
   border-radius: 4px;
+  flex: 1 0 auto;
   outline: none;
 }
 
 .editable_text__text:focus {
+  background-color: #fff;
   border-color: #09f;
 }

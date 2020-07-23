@@ -1,25 +1,66 @@
-.add_form__column {
+.add_form__edit {
+  background-color: #eee;
+  border-radius: 0.25em;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 0.5rem;
+}
+
+.add_form__column,
+.add_form__card {
   display: flex;
   padding: 0.5em;
 }
 
-.add_form__column > .button {
+.add_form__column > .add_form__edit,
+.add_form__card > .add_form__edit,
+.add_form__column > .button,
+.add_form__card > .button {
   flex: 1 0 auto;
 }
 
-.add_form--close {
-  border: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
+.add_form__card > .add_form__edit {
   padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
+}
+
+.add_form__card > .button {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.add_form--close {
+  display: none;
 }
 
 .add_form__footer {
   display: flex;
+  margin-top: 0.5em;
+}
+
+.add_form__footer .button:first-child {
+  margin-right: 0.5rem;
+}
+
+.input {
+  background-color: #fff;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  flex: 1 0 auto;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  padding: 0.5em 0.5rem;
+}
+
+.input:focus {
+  border-color: #09f;
+}
+
+.add_form__textarea {
+  border: 0;
+  border-radius: 0.25em;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  padding: 0.5em 0.5rem;
 }
