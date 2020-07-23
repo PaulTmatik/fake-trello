@@ -1,10 +1,10 @@
 import React from "react";
-import AddForm from "./components/AddForm";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
     <>
-      <AddForm addType="column" onSubmit={e => console.log(e)} />
+      <Dashboard />
     </>
   );
 }

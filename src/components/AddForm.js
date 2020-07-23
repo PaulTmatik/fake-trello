@@ -36,9 +36,10 @@ class AddForm extends Component {
     const addType = this.props.addType || "column";
     const buttonsText = this.buttonsText[addType];
     const { isEdit, editableText } = this.state;
+    const { className } = this.props;
 
     return (
-      <div className="add_form">
+      <div className={combineClassNames("add_form", className)}>
         <form
           className={combineClassNames([
             "add_form__edit",
