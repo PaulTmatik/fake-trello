@@ -7,9 +7,23 @@
   font-family: inherit;
   font-size: inherit;
   line-height: 1em;
-  padding: 0.5em 1rem;
+  padding: 0.75em 1rem;
 }
 
 .button__icon + span {
   margin-left: .5em;
+}
+
+.button--column_area {
+  background-color: #fff5;
+  border: transparent;
+  color: #fff;
+}
+
+.button--column_area:hover {
+  background-color: #fff7;
+}
+
+.button--column_area .button__icon {
+  fill: #fff;
 }

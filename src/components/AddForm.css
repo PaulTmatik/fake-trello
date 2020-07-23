@@ -1,3 +1,12 @@
+.add_form__column {
+  display: flex;
+  padding: 0.5em;
+}
+
+.add_form__column > .button {
+  flex: 1 0 auto;
+}
+
 .add_form--close {
   border: 0;
   clip: rect(0 0 0 0);

@@ -39,7 +39,7 @@ class AddForm extends Component {
     const { className } = this.props;
 
     return (
-      <div className={combineClassNames("add_form", className)}>
+      <div className={combineClassNames("add_form", `add_form__${addType}`, className)}>
         <form
           className={combineClassNames([
             "add_form__edit",
@@ -60,7 +60,8 @@ class AddForm extends Component {
           onClick={this.onClickShowFormButton}
           className={combineClassNames({
             "add_form--close": isEdit,
-          })}
+          },
+          `button--${addType}_area`)}
         >
           {buttonsText.openButtonText}
         </Button>
