@@ -14,6 +14,7 @@ class AddForm extends Component {
       editableText: "",
     };
 
+    // Имитация модуля работы с естественным языком
     this.buttonsText = {
       card: {
         openButtonText: "Добавить ещё одну карточку",
@@ -35,7 +36,7 @@ class AddForm extends Component {
     const addType = this.props.addType || "column";
     const buttonsText = this.buttonsText[addType];
     const { isEdit, editableText } = this.state;
-    
+
     return (
       <div className="add_form">
         <form
