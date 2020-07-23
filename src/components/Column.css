@@ -19,3 +19,11 @@
 .column__editable_header {
   flex: 1 0 auto;
 }
+
+.column__card {
+  margin: .5em;
+}
+
+.column__card:last-child {
+  margin-bottom: 0;
+}

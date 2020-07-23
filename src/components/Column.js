@@ -3,6 +3,7 @@ import AddForm from './AddForm';
 import EditableText from './EditableText';
 
 import "./Column.css";
+import Card from './Card';
 
 class Column extends Component {
   render() {
@@ -10,6 +11,7 @@ class Column extends Component {
       <div className="column__titlebar">
         <EditableText className="column__editable_header" />
       </div>
+      <Card className="column__card">Тест карточки</Card>
       <AddForm addType="card" className="column__add_card"/>
     </div>
   }
