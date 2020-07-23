@@ -28,6 +28,15 @@
   padding-right: 0.5rem;
 }
 
+@media (min-width: 568px) {
+  .add_form__column {
+    flex: 0 0 auto;
+  }
+  .add_form__column > .button {
+    max-width: 272px;
+  }
+}
+
 .add_form--close {
   display: none;
 }

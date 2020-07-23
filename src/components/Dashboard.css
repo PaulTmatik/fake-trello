@@ -1,0 +1,10 @@
+@media (min-width: 568px) {
+  .dashboard {
+    align-items: flex-start;
+    display: flex;
+    height: 100vh;
+    overflow-x: auto;
+    padding-right: 0.5rem;
+    width: 100vw;
+  }
+}
