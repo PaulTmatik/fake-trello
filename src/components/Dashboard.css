@@ -1,3 +1,6 @@
+.dashboard {
+  box-sizing: border-box;
+}
 @media (min-width: 568px) {
   .dashboard {
     align-items: flex-start;

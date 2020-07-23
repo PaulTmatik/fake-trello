@@ -1,8 +1,15 @@
 .modal {
   background-color: #fff;
   border-radius: 0.5em;
-  margin: 1rem;
+  box-sizing: border-box;
+  margin: 1rem auto;
   padding: 1rem 1em;
+}
+
+@media (min-width: 568px) {
+  .modal {
+    max-width: 552px;
+  }
 }
 
 .modal--hide {

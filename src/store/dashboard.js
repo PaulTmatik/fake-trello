@@ -24,6 +24,7 @@ export const dashboardReducer = (
   action
 ) => {
   switch (action.type) {
+
     case EDIT_COLUMN_NAME:
       if (action.newName !== "") {
         const columnIndex = state.columns.findIndex(
@@ -37,6 +38,7 @@ export const dashboardReducer = (
         return { ...state, columns };
       }
       return { ...state };
+
     case ADD_COLUMN:
       const idCounter = state.idCounter + 1;
       return {
@@ -51,6 +53,7 @@ export const dashboardReducer = (
         ],
         idCounter,
       };
+
     case ADD_CARD:
       const columnIndex = state.columns.findIndex(
         (element) => element.id === action.columnId
@@ -73,6 +76,7 @@ export const dashboardReducer = (
         ...state,
         columns,
       };
+      
     default:
       return state;
   }
