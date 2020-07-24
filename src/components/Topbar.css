@@ -14,9 +14,22 @@
 }
 
 .topbar > .logo {
-  font-family: "Tangerine", cursive;
-  font-size: 3em;
+  font-family: 'Yellowtail', cursive;
+  font-size: 2.5em;
 }
+
+@media (max-width: 320px) {
+  .topbar > .logo {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+  .topbar > .logo {
+    font-size: 1.75em;
+  }
+}
+
 
 .topbar__user {
   display: flex;
