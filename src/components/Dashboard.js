@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { addColumnAction, editColumnNameAction, addCardAction } from "../store/dashboard";
+import {
+  addColumnAction,
+  editColumnNameAction,
+  addCardAction,
+} from "../store/dashboard";
 
 import "./Dashboard";
 import AddForm from "./AddForm";
 import Column from "./Column";
 
 import "./Dashboard.css";
+import Topbar from "./Topbar";
+import { Redirect } from "react-router-dom";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -16,17 +22,28 @@ class Dashboard extends Component {
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.onChangeNameHandler = this.onChangeNameHandler.bind(this);
   }
-  
+
   render() {
-    return (
-      <div className="dashboard">
-        {this.drawColumns()}
-        <AddForm
-          addType="column"
-          className="dashboard__add_column"
-          onSubmit={this.onSubmitHandler}
+    if (!this.props.authuser.name)
+      return (
+        <Redirect
+          to={{
+            pathname: "/login",
+          }}
         />
-      </div>
+      );
+    return (
+      <>
+        <Topbar />
+        <div className="dashboard">
+          {this.drawColumns()}
+          <AddForm
+            addType="column"
+            className="dashboard__add_column"
+            onSubmit={this.onSubmitHandler}
+          />
+        </div>
+      </>
     );
   }
 
@@ -57,6 +74,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => ({
   columns: state.dashboardReducer.columns,
+  authuser: state.authReducer.authuser,
 });
 
 const mapDispatchToProps = (dispatch) => ({

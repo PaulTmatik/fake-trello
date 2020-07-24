@@ -6,7 +6,7 @@ import Button from "../pure/Button";
 import { connect } from "react-redux";
 import { createUserAction, loginUserAction } from "../../store/auth";
 
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import "./Register.css";
 
@@ -37,6 +37,7 @@ class Register extends Component {
       <div className="register">
         <header className="auth__head">
           <h1 className="auth__header">Регистрация пользователя</h1>
+          <Link to="/login" className="auth__link">Авторизация пользователя</Link>
         </header>
         <form className="auth__form" onSubmit={this.onSubmitHandler}>
           <CustomInput

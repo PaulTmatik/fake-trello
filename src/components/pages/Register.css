@@ -24,3 +24,14 @@
 .auth__form .button {
   margin-top: 2em;
 }
+
+.auth__link {
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 1em;
+  text-decoration: none;
+}
+
+.auth__link:hover {
+  text-decoration: underline;
+}

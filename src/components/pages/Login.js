@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import { Redirect, Link } from "react-router-dom";
 
-import "./Register.css";
 import CustomInput from "../pure/CustomInput";
 import Button from "../pure/Button";
+
+import { connect } from "react-redux";
+import { loginUserAction } from "../../store/auth";
+
+import "./Register.css";
 
 class Login extends Component {
   constructor(props) {
@@ -10,17 +15,29 @@ class Login extends Component {
     this.state = {
       user_email: "",
       user_password: "",
+
+      home_redirect: false,
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
   }
   render() {
+    if (this.state.home_redirect)
+      return (
+        <Redirect
+          to={{
+            pathname: "/",
+          }}
+        />
+      );
     return (
       <div className="register">
         <header className="auth__head">
           <h1 className="auth__header">Авторизация пользователя</h1>
+          <Link to="/register" className="auth__link">Регистрация пользователя</Link>
         </header>
-        <form className="auth__form">
+        <form className="auth__form" onSubmit={this.onSubmitHandler}>
           <CustomInput
             label="Емайл"
             type="email"
@@ -52,6 +69,22 @@ class Login extends Component {
     newState[e.target.name] = e.target.value;
     this.setState(newState);
   }
+
+  onSubmitHandler(e) {
+    e.preventDefault();
+    const { loginUser } = this.props;
+    const { user_email, user_password } = this.state;
+    loginUser && loginUser(user_email, user_password);
+    this.setState({
+      user_email: "",
+      user_password: "",
+      home_redirect: true,
+    });
+  }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  loginUser: (email, password) => dispatch(loginUserAction(email, password)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);

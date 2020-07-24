@@ -3,9 +3,11 @@ import { Provider } from "react-redux";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import store from "./store";
 import Dashboard from "./components/Dashboard";
 import Register from "./components/pages/Register";
+import Login from "./components/pages/Login";
+
+import store from "./store";
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
         <Switch>
           <Route path="/register">
             <Register />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/">
             <Dashboard />
