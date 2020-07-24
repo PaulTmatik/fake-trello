@@ -2,9 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logoutUserAction } from "../store/auth";
 
+import "./Topbar.css";
+
 class Topbar extends Component {
   render() {
-    return <div className="topbar">{this.renderCurrentUser()}</div>;
+    return (
+      <div className="topbar">
+        <div className="logo">trello-clone</div>
+        {this.renderCurrentUser()}
+      </div>
+    );
   }
 
   renderCurrentUser() {

@@ -1,0 +1,48 @@
+.topbar {
+  align-items: center;
+  background-color: #fff2;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+  left: 0;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.topbar > .logo {
+  font-family: "Tangerine", cursive;
+  font-size: 3em;
+}
+
+.topbar__user {
+  display: flex;
+}
+
+.topbar__user_wrapper {
+  margin-right: 1em;
+}
+
+.topbar__useremail {
+  color: #fffa;
+  font-size: 0.75em;
+}
+
+.topbar__logout {
+  background-color: #fff3;
+  border: 2px solid transparent;
+  border-radius: 0.25em;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 300;
+  opacity: .7;
+}
+
+.topbar__logout:hover {
+  background-color: #fff5;
+}
