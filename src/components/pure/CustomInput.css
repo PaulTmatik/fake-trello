@@ -17,6 +17,7 @@
 }
 
 .custom_input__label {
+  color: #777;
   left: calc(1rem + 2px);
   line-height: 3.6em;
   position: absolute;
