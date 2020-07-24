@@ -1,0 +1,31 @@
+.custom_input {
+  display: inline-block;
+  position: relative;
+}
+
+.custom_input__input {
+  background-color: #fff;
+  border: 2px solid transparent;
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  min-height: 3.5em;
+  padding: 1.25em 1rem 0.5em;
+  width: 100%;
+}
+
+.custom_input__label {
+  left: calc(1rem + 2px);
+  line-height: 3.6em;
+  position: absolute;
+  transition: 100ms ease-in;
+  transition-property: font-size line-height;
+}
+
+.custom_input__input:not([value=""]) + .custom_input__label,
+.custom_input__input:focus + .custom_input__label {
+  font-size: 0.75em;
+  line-height: 3em;
+}
