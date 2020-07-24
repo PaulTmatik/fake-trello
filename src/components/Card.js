@@ -1,19 +1,27 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import "./Card.css";
-import { combineClassNames } from "../utils/classnameCombiner";
 import Modal from "./Modal";
 import EditableText from "./EditableText";
+
+import { editCardNameAction } from "../store/dashboard";
+
+import { combineClassNames } from "../utils/classnameCombiner";
+
+import "./Card.css";
 
 class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isOpenModal: false,
+      cardName: props.children,
     };
 
     this.onClickHandler = this.onClickHandler.bind(this);
     this.onCloseHandler = this.onCloseHandler.bind(this);
+    this.onEditTextHandler = this.onEditTextHandler.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
   }
   render() {
     const { children, className } = this.props;
@@ -27,7 +35,11 @@ class Card extends Component {
         </div>
         <Modal isOpen={this.state.isOpenModal} onClose={this.onCloseHandler}>
           <div className="card__info_heading">
-            <EditableText value={children}/>
+            <EditableText
+              value={this.state.cardName}
+              onChange={this.onEditTextHandler}
+              onBlur={this.onChangeHandler}
+            />
           </div>
         </Modal>
       </div>
@@ -41,6 +53,21 @@ class Card extends Component {
   onCloseHandler() {
     this.setState({ isOpenModal: false });
   }
+
+  onEditTextHandler(e) {
+    this.setState({ cardName: e.target.value });
+  }
+
+  onChangeHandler(e) {
+    const { editCardName, columnId, cardId, children } = this.props;
+    if (e.target.value === "") this.setState({ cardName: children });
+    editCardName && editCardName(columnId, cardId, e.target.value);
+  }
 }
 
-export default Card;
+const mapDispatchToProps = (dispatch) => ({
+  editCardName: (columnId, cardId, name) =>
+    dispatch(editCardNameAction(columnId, cardId, name)),
+});
+
+export default connect(null, mapDispatchToProps)(Card);

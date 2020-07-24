@@ -40,8 +40,9 @@ class Column extends Component {
   }
 
   renderCards() {
-    return this.props.cards.map((card) => (
-      <Card key={card.id} className="column__card">
+    const {columnId, cards} = this.props;
+    return cards.map((card) => (
+      <Card key={card.id} className="column__card" columnId={columnId} cardId={card.id}>
         {card.name}
       </Card>
     ));
