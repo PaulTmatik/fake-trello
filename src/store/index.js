@@ -1,7 +1,8 @@
 import { combineReducers, createStore } from "redux";
 import { dashboardReducer } from "./dashboard";
+import { authReducer } from "./auth";
 
-const reducersList = { dashboardReducer };
+const reducersList = { dashboardReducer, authReducer };
 
 export default createStore(
   combineReducers(reducersList),

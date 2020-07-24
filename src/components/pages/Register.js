@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 
-import "./Register.css";
 import CustomInput from "../pure/CustomInput";
 import Button from "../pure/Button";
+
+import { connect } from "react-redux";
+import { createUserAction, loginUserAction } from "../../store/auth";
+
+import { Redirect } from "react-router-dom";
+
+import "./Register.css";
 
 class Register extends Component {
   constructor(props) {
@@ -11,17 +17,28 @@ class Register extends Component {
       user_email: "",
       user_password: "",
       user_name: "",
+
+      home_redirect: false,
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
   }
   render() {
+    if (this.state.home_redirect)
+      return (
+        <Redirect
+          to={{
+            pathname: "/",
+          }}
+        />
+      );
     return (
       <div className="register">
         <header className="auth__head">
           <h1 className="auth__header">Регистрация пользователя</h1>
         </header>
-        <form className="auth__form">
+        <form className="auth__form" onSubmit={this.onSubmitHandler}>
           <CustomInput
             label="Имя"
             type="text"
@@ -52,7 +69,9 @@ class Register extends Component {
             onChange={this.onChangeHandler}
           />
 
-          <Button className="button--column_area">Зарегистрироваться</Button>
+          <Button type="submit" className="button--column_area">
+            Зарегистрироваться
+          </Button>
         </form>
       </div>
     );
@@ -63,6 +82,26 @@ class Register extends Component {
     newState[e.target.name] = e.target.value;
     this.setState(newState);
   }
+
+  onSubmitHandler(e) {
+    e.preventDefault();
+    const { createUser, loginUser } = this.props;
+    const { user_email, user_password, user_name } = this.state;
+    createUser && createUser(user_name, user_email, user_password);
+    loginUser && loginUser(user_email, user_password);
+    this.setState({
+      user_email: "",
+      user_password: "",
+      user_name: "",
+      home_redirect: true,
+    });
+  }
 }
 
-export default Register;
+const mapDispatchToProps = (dispatch) => ({
+  createUser: (name, email, password) =>
+    dispatch(createUserAction(name, email, password)),
+  loginUser: (email, password) => dispatch(loginUserAction(email, password)),
+});
+
+export default connect(null, mapDispatchToProps)(Register);
