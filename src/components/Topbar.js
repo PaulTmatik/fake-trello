@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { logoutUserAction } from "../store/auth";
 
 class Topbar extends Component {
   render() {
@@ -15,10 +16,20 @@ class Topbar extends Component {
             <div className="topbar__username">{authuser.name}</div>
             <div className="topbar__useremail">{authuser.email}</div>
           </div>
-          <button className="topbar__logout">Выход</button>
+          <button
+            className="topbar__logout"
+            onClick={this.onClickHandler.bind(this)}
+          >
+            Выход
+          </button>
         </div>
       )
     );
+  }
+
+  onClickHandler() {
+    const { logout } = this.props;
+    logout && logout();
   }
 }
 
@@ -26,6 +37,8 @@ const mapStateToProps = (state) => ({
   authuser: state.authReducer.authuser,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logoutUserAction()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Topbar);

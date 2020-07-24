@@ -35,7 +35,9 @@ class Login extends Component {
       <div className="register">
         <header className="auth__head">
           <h1 className="auth__header">Авторизация пользователя</h1>
-          <Link to="/register" className="auth__link">Регистрация пользователя</Link>
+          <Link to="/register" className="auth__link">
+            Регистрация пользователя
+          </Link>
         </header>
         <form className="auth__form" onSubmit={this.onSubmitHandler}>
           <CustomInput
@@ -58,7 +60,9 @@ class Login extends Component {
             onChange={this.onChangeHandler}
           />
 
-          <Button className="button--column_area">Авторизироваться</Button>
+          <Button className="button--column_area" type="submit">
+            Авторизироваться
+          </Button>
         </form>
       </div>
     );
